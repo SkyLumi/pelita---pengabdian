@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://di1dqf480n71t"
+path="res://.godot/imported/D5 basic.mp3-b43ec3d06f31db23101e2c23538a9928.mp3str"
+
+[deps]
+
+source_file="res://assets/games/audio/dialog/D5 basic.mp3"
+dest_files=["res://.godot/imported/D5 basic.mp3-b43ec3d06f31db23101e2c23538a9928.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -11,60 +11,76 @@ extends Control
 
 
 func _ready():
-	namaInput.grab_focus()
-	
-	_on_nama_input_focus_entered()
+    namaInput.grab_focus()
+    
+    _on_nama_input_focus_entered()
 
 func _on_nama_input_focus_entered():
-	_move_selector_to(nama)
+    _move_selector_to(nama)
 
 func _on_nisn_input_focus_entered():
-	_move_selector_to(nisn)
+    _move_selector_to(nisn)
 
 func _on_kataSandi_input_focus_entered():
-	_move_selector_to(kataSandi)
+    _move_selector_to(kataSandi)
 
 func _on_daftar_button_focus_entered():
-	_move_selector_to(daftar)
+    _move_selector_to(daftar)
 
 func _move_selector_to(button_node):
-	var target_y = button_node.global_position.y
-	
-	var center_y = target_y + (button_node.size.y / 2)
-	selector.global_position.y = center_y - (selector.size.y / 2)
-	
+    var target_y = button_node.global_position.y
+    
+    var center_y = target_y + (button_node.size.y / 2)
+    selector.global_position.y = center_y - (selector.size.y / 2)
+    
 
 
-func _on_daftar_button_pressed() -> void:
-	print("Tombol DAFTAR dipencet!")
-	var tampungNama = namaInput.text
-	var tampungNisn = nisnInput.text
-	var tampungKataSandi = kataSandiInput.text
-	
-	# 2. Validasi simpel (biar gak kosong)
-	if tampungNama.is_empty() or tampungNisn.is_empty() or tampungKataSandi.is_empty():
-		print("Data gak boleh kosong!")
-		# Nanti di sini bisa nampilin label error, dll.
-		return # Stop, jangan lanjut nyimpen
-		
-	# 3. HASH PASSWORD-NYA (WAJIB!)
-	var password_hash = tampungKataSandi.md5_text()
-	
-	# 4. Bikin objek ConfigFile
-	var config = ConfigFile.new()
-	
-	# 5. Masukin datanya
-	config.set_value("user", "nama", tampungNama)
-	config.set_value("user", "nisn", tampungNisn)
-	config.set_value("user", "password_hash", password_hash) # Simpen HASH-nya
-	
-	# 6. Simpen ke file lokal
-	var file_path = "user://data_akun.cfg"
-	var error = config.save(file_path)
-	
-	# 7. Kasih tau hasilnya
-	if error != OK:
-		print("ERROR: Gagal nyimpen data akun ke " + file_path)
-	else:
-		print("SUKSES! Data akun " + tampungNama + " berhasil disimpan.")
-		
+# == FUNGSI DARI SINYAL ==
+# Ini fungsi yang kepanggil pas tombol 'DAFTAR' abang dipencet
+# Pastiin sinyal 'pressed()' dari tombolnya udah nyambung ke sini
+func _on_daftar_button_pressed():
+    
+    # 1. Ambil semua teks dari inputan
+    var tampungNama = namaInput.text
+    var tampungNisn = nisnInput.text
+    var tampungKataSandi = kataSandiInput.text
+    
+    # 2. Validasi (Cek biar gak kosong)
+    if tampungNama.is_empty() or tampungNisn.is_empty() or tampungKataSandi.is_empty():
+        print("ERROR: Data gak boleh kosong!")
+        # Nanti di sini abang bisa nampilin Label error
+        return # Stop, jangan lanjut
+        
+    # 3. Bikin path file pake NISN
+    # Ini kuncinya: "user://akun_123.cfg", "user://akun_456.cfg", dst.
+    var file_path = "user://akun_" + tampungNisn + ".cfg"
+    
+    # 4. CEK PENTING: NISN udah kedaftar belom?
+    if FileAccess.file_exists(file_path):
+        print("ERROR: NISN " + tampungNisn + " sudah terdaftar!")
+        # Tampilkan label error "NISN sudah dipakai"
+        return # Stop, jangan ditimpa
+
+    # 5. Kalo aman, baru kita HASH password-nya
+    var password_hash = tampungKataSandi.md5_text()
+    
+    # 6. Bikin objek ConfigFile
+    var config = ConfigFile.new()
+    
+    # 7. Masukin datanya ke section [user]
+    config.set_value("user", "nama", tampungNama)
+    config.set_value("user", "nisn", tampungNisn)
+    config.set_value("user", "password_hash", password_hash) # Simpen HASH-nya
+    
+    # 8. Simpen filenya
+    var error = config.save(file_path)
+    
+    # 9. Kasih feedback
+    if error != OK:
+        print("GAWAT: Gagal nyimpen data ke " + file_path)
+    else:
+        print("SUKSES! Murid '" + tampungNama + "' (NISN: " + tampungNisn + ") berhasil didaftarkan.")
+        
+        # (Opsional) Kalo sukses, pindah ke scene Login
+        get_tree().change_scene_to_file("res://scenes/MainMenu/login_screen.tscn")
+        

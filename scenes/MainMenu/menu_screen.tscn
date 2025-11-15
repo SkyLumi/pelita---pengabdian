@@ -163,6 +163,10 @@ theme_override_font_sizes/font_size = 32
 text = "Pilih"
 
 [connection signal="focus_entered" from="Menu/ButtonList/Masuk" to="Menu" method="_on_masuk_button_focus_entered"]
+[connection signal="pressed" from="Menu/ButtonList/Masuk" to="Menu" method="_on_masuk_button_pressed"]
 [connection signal="focus_entered" from="Menu/ButtonList/Daftar" to="Menu" method="_on_daftar_button_focus_entered"]
+[connection signal="pressed" from="Menu/ButtonList/Daftar" to="Menu" method="_on_daftar_button_pressed"]
 [connection signal="focus_entered" from="Menu/ButtonList/Pengaturan" to="Menu" method="_on_pengaturan_button_focus_entered"]
+[connection signal="pressed" from="Menu/ButtonList/Pengaturan" to="Menu" method="_on_pengaturan_button_pressed"]
 [connection signal="focus_entered" from="Menu/ButtonList/Petunjuk" to="Menu" method="_on_petunjuk_button_focus_entered"]
+[connection signal="pressed" from="Menu/ButtonList/Petunjuk" to="Menu" method="_on_petunjuk_button_pressed"]

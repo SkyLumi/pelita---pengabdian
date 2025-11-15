@@ -1,0 +1,148 @@
+[gd_scene load_steps=15 format=3 uid="uid://0w8dufl6uuwx"]
+
+[ext_resource type="Texture2D" uid="uid://c5ghtpk18rbni" path="res://assets/games/Map.png" id="1_3kax4"]
+[ext_resource type="PackedScene" uid="uid://dbn25ygmjrfjv" path="res://scenes/game/Main_Character.tscn" id="2_o6uqf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o6uqf"]
+size = Vector2(640, 160)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bkf83"]
+size = Vector2(640, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6o34d"]
+size = Vector2(960, 480)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6do6y"]
+size = Vector2(640, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_84bui"]
+size = Vector2(960, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xurxm"]
+size = Vector2(640, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mg3ha"]
+size = Vector2(960, 240)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tj6qe"]
+size = Vector2(320, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5xwg"]
+size = Vector2(480, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uin07"]
+size = Vector2(720, 400)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3g17v"]
+size = Vector2(80, 1920)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7b5wt"]
+size = Vector2(1840, 80)
+
+[node name="MapScene" type="Node2D"]
+
+[node name="Map" type="Sprite2D" parent="."]
+position = Vector2(840, 960)
+texture = ExtResource("1_3kax4")
+
+[node name="LevelCollision" type="Node2D" parent="."]
+
+[node name="Perumahan" type="StaticBody2D" parent="LevelCollision"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Perumahan"]
+position = Vector2(320, 80)
+shape = SubResource("RectangleShape2D_o6uqf")
+
+[node name="Puskesmas" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(10, 250)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Puskesmas"]
+position = Vector2(310, 110)
+shape = SubResource("RectangleShape2D_bkf83")
+
+[node name="TokoMadura" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(720, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/TokoMadura"]
+position = Vector2(480, 240)
+shape = SubResource("RectangleShape2D_6o34d")
+
+[node name="Sawah" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(0, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Sawah"]
+position = Vector2(320, 280)
+shape = SubResource("RectangleShape2D_6do6y")
+
+[node name="Kebun" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(720, 560)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Kebun"]
+position = Vector2(480, 280)
+shape = SubResource("RectangleShape2D_84bui")
+
+[node name="Sungai" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(0, 1200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Sungai"]
+position = Vector2(320, 120)
+shape = SubResource("RectangleShape2D_xurxm")
+
+[node name="Sungai2" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(720, 1200)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Sungai2"]
+position = Vector2(480, 120)
+shape = SubResource("RectangleShape2D_mg3ha")
+
+[node name="Masjid" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(0, 1520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Masjid"]
+position = Vector2(160, 200)
+shape = SubResource("RectangleShape2D_tj6qe")
+
+[node name="LapanganBola" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(400, 1520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/LapanganBola"]
+position = Vector2(240, 200)
+shape = SubResource("RectangleShape2D_u5xwg")
+
+[node name="Pasar" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(960, 1520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Pasar"]
+position = Vector2(360, 200)
+shape = SubResource("RectangleShape2D_uin07")
+
+[node name="Tembok" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(-80, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Tembok"]
+position = Vector2(40, 960)
+shape = SubResource("RectangleShape2D_3g17v")
+
+[node name="Tembok2" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(1680, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Tembok2"]
+position = Vector2(40, 960)
+shape = SubResource("RectangleShape2D_3g17v")
+
+[node name="Tembok3" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(-80, -80)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Tembok3"]
+position = Vector2(920, 40)
+shape = SubResource("RectangleShape2D_7b5wt")
+
+[node name="Tembok4" type="StaticBody2D" parent="LevelCollision"]
+position = Vector2(-80, 1920)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelCollision/Tembok4"]
+position = Vector2(920, 40)
+shape = SubResource("RectangleShape2D_7b5wt")
+
+[node name="MainCharacter" parent="." instance=ExtResource("2_o6uqf")]
+position = Vector2(520, 200)

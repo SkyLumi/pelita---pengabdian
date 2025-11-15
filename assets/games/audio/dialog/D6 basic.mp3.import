@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bpnmok8nx0dpg"
+path="res://.godot/imported/D6 basic.mp3-406d10ba8d44207991c98c25d8afc679.mp3str"
+
+[deps]
+
+source_file="res://assets/games/audio/dialog/D6 basic.mp3"
+dest_files=["res://.godot/imported/D6 basic.mp3-406d10ba8d44207991c98c25d8afc679.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
