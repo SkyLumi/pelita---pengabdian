@@ -1,0 +1,231 @@
+[gd_scene load_steps=23 format=3 uid="uid://dwigixv8ecpe0"]
+
+[ext_resource type="Texture2D" uid="uid://bxvcpf3jgx24b" path="res://assets/backgrounds/background.png" id="1_srahe"]
+[ext_resource type="Texture2D" uid="uid://xsrgjjs7qi6o" path="res://assets/backgrounds/particle.png" id="2_3aejw"]
+[ext_resource type="Script" uid="uid://d4c7degv5odcg" path="res://scripts/login/changeRegisterField.gd" id="3_0cfhm"]
+[ext_resource type="Texture2D" uid="uid://wfy55vdu23ux" path="res://assets/backgrounds/petunjuk.png" id="3_7lpec"]
+[ext_resource type="FontFile" uid="uid://bwvqbta1tx7wk" path="res://fonts/upheaval/upheavtt.ttf" id="4_lciov"]
+[ext_resource type="Texture2D" uid="uid://bmpr8d6dtu7qw" path="res://assets/backgrounds/input-box.png" id="5_0cfhm"]
+[ext_resource type="FontFile" uid="uid://drf21n6e7vvso" path="res://fonts/vcr/VCR_OSD_MONO_1.001.ttf" id="5_3aejw"]
+[ext_resource type="Texture2D" uid="uid://d2iui06l3d0a8" path="res://assets/backgrounds/mc.png" id="6_jww0n"]
+[ext_resource type="Texture2D" uid="uid://ctb40kb5bhwfj" path="res://assets/backgrounds/daftar-button.png" id="7_7lpec"]
+[ext_resource type="Texture2D" uid="uid://buv5kt7lb8ymr" path="res://assets/backgrounds/x_button.png" id="7_lqx4v"]
+[ext_resource type="FontFile" uid="uid://76fsud3xg15p" path="res://fonts/pixelify/PixelifySans-VariableFont_wght.ttf" id="8_m0jjf"]
+[ext_resource type="Texture2D" uid="uid://dxbxtsgtp78ks" path="res://assets/backgrounds/daftar-button-pressed.png" id="9_jww0n"]
+[ext_resource type="Texture2D" uid="uid://insgpwb8mpj8" path="res://assets/backgrounds/segitiga_button.png" id="12_jww0n"]
+
+[sub_resource type="Gradient" id="Gradient_navmr"]
+colors = PackedColorArray(1, 1, 1, 1, 0.89492244, 0.89492244, 0.8949224, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqvf2"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wshh4"]
+texture = ExtResource("5_0cfhm")
+texture_margin_left = 24.0
+texture_margin_right = 24.0
+modulate_color = Color(1, 1, 1, 0.50980395)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ad0jy"]
+texture = ExtResource("5_0cfhm")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xv3gy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lciov"]
+texture = ExtResource("7_7lpec")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lqx4v"]
+texture = ExtResource("9_jww0n")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7lpec"]
+texture = ExtResource("7_7lpec")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0cfhm"]
+
+[node name="RegisterScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1074.0
+texture = ExtResource("1_srahe")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+visible = false
+position = Vector2(2018, 533)
+emitting = false
+texture = ExtResource("2_3aejw")
+lifetime = 4.0
+preprocess = 2.7
+emission_shape = 3
+emission_rect_extents = Vector2(100, 540)
+spread = 39.43
+gravity = Vector2(-380, 0)
+initial_velocity_max = 105.81
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_navmr")
+
+[node name="Menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_0cfhm")
+
+[node name="Selector" type="TextureRect" parent="Menu"]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 172.0
+offset_right = 692.0
+offset_bottom = 219.0
+texture = ExtResource("3_7lpec")
+
+[node name="LineTextList" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 719.0
+offset_top = 154.0
+offset_right = 1365.0
+offset_bottom = 808.0
+alignment = 1
+
+[node name="Nama" type="Label" parent="Menu/LineTextList"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("4_lciov")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xqvf2")
+text = "NAMA"
+
+[node name="NamaInput" type="LineEdit" parent="Menu/LineTextList"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../NisnInput")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_3aejw")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_wshh4")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ad0jy")
+placeholder_text = "masukkan nama"
+
+[node name="Nisn" type="Label" parent="Menu/LineTextList"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("4_lciov")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xv3gy")
+text = "NISN"
+
+[node name="NisnInput" type="LineEdit" parent="Menu/LineTextList"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../NamaInput")
+focus_neighbor_bottom = NodePath("../KataSandiInput")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_3aejw")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_wshh4")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ad0jy")
+placeholder_text = "masukkan nisn"
+max_length = 20
+
+[node name="KataSandi" type="Label" parent="Menu/LineTextList"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("4_lciov")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xv3gy")
+text = "KATA SANDI"
+
+[node name="KataSandiInput" type="LineEdit" parent="Menu/LineTextList"]
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../NisnInput")
+focus_neighbor_bottom = NodePath("../Daftar")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_3aejw")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxTexture_wshh4")
+theme_override_styles/focus = SubResource("StyleBoxTexture_ad0jy")
+placeholder_text = "masukkan kata sandi"
+secret = true
+
+[node name="ganjel bro" type="Control" parent="Menu/LineTextList"]
+custom_minimum_size = Vector2(0, 79)
+layout_mode = 2
+
+[node name="Daftar" type="Button" parent="Menu/LineTextList"]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 2
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../KataSandiInput")
+theme_override_colors/font_color = Color(0.19607843, 0.14117648, 0.50980395, 1)
+theme_override_colors/font_focus_color = Color(0.19607843, 0.14117648, 0.50980395, 1)
+theme_override_colors/font_pressed_color = Color(0.96862745, 0.14117648, 0.45490196, 1)
+theme_override_colors/font_hover_color = Color(0.19607843, 0.14117648, 0.50980395, 1)
+theme_override_fonts/font = ExtResource("4_lciov")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxTexture_lciov")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lqx4v")
+theme_override_styles/hover = SubResource("StyleBoxTexture_7lpec")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0cfhm")
+text = "Daftar"
+
+[node name="Karakter" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 429.0
+offset_right = 522.0
+offset_bottom = 1078.0
+texture = ExtResource("6_jww0n")
+
+[node name="XButton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1669.0
+offset_top = 936.0
+offset_right = 1709.0
+offset_bottom = 976.0
+texture = ExtResource("7_lqx4v")
+
+[node name="PilihLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1725.0
+offset_top = 936.0
+offset_right = 1784.0
+offset_bottom = 975.0
+theme_override_fonts/font = ExtResource("8_m0jjf")
+theme_override_font_sizes/font_size = 32
+text = "Pilih"
+
+[node name="SegitigaButton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1424.0
+offset_top = 936.0
+offset_right = 1464.0
+offset_bottom = 976.0
+texture = ExtResource("12_jww0n")
+
+[node name="KembaliLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1480.0
+offset_top = 936.0
+offset_right = 1593.0
+offset_bottom = 975.0
+theme_override_fonts/font = ExtResource("8_m0jjf")
+theme_override_font_sizes/font_size = 32
+text = "Kembali"
+
+[connection signal="focus_entered" from="Menu/LineTextList/NamaInput" to="Menu" method="_on_nama_input_focus_entered"]
+[connection signal="focus_entered" from="Menu/LineTextList/NisnInput" to="Menu" method="_on_nisn_input_focus_entered"]
+[connection signal="focus_entered" from="Menu/LineTextList/KataSandiInput" to="Menu" method="_on_kataSandi_input_focus_entered"]
+[connection signal="focus_entered" from="Menu/LineTextList/Daftar" to="Menu" method="_on_daftar_button_focus_entered"]
+[connection signal="pressed" from="Menu/LineTextList/Daftar" to="Menu" method="_on_daftar_button_pressed"]

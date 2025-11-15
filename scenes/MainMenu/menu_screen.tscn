@@ -1,0 +1,168 @@
+[gd_scene load_steps=15 format=3 uid="uid://4fujsra4x6rg"]
+
+[ext_resource type="Texture2D" uid="uid://bxvcpf3jgx24b" path="res://assets/backgrounds/background.png" id="1_dtwsp"]
+[ext_resource type="Texture2D" uid="uid://xsrgjjs7qi6o" path="res://assets/backgrounds/particle.png" id="2_xqvf2"]
+[ext_resource type="FontFile" uid="uid://bwvqbta1tx7wk" path="res://fonts/upheaval/upheavtt.ttf" id="3_5m8ma"]
+[ext_resource type="Script" uid="uid://dy5nmw0yv2pdf" path="res://scripts/login/changeButtonRegister.gd" id="3_xqvf2"]
+[ext_resource type="Texture2D" uid="uid://d2iui06l3d0a8" path="res://assets/backgrounds/mc.png" id="4_l756y"]
+[ext_resource type="Texture2D" uid="uid://bdw0bwheco471" path="res://assets/backgrounds/judul.png" id="5_qeenl"]
+[ext_resource type="Texture2D" uid="uid://wfy55vdu23ux" path="res://assets/backgrounds/petunjuk.png" id="6_cmc67"]
+[ext_resource type="Texture2D" uid="uid://buv5kt7lb8ymr" path="res://assets/backgrounds/x_button.png" id="8_l756y"]
+[ext_resource type="FontFile" uid="uid://76fsud3xg15p" path="res://fonts/pixelify/PixelifySans-VariableFont_wght.ttf" id="9_qeenl"]
+
+[sub_resource type="Gradient" id="Gradient_navmr"]
+colors = PackedColorArray(1, 1, 1, 1, 0.89492244, 0.89492244, 0.8949224, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqvf2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5m8ma"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l756y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qeenl"]
+
+[node name="MenuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1074.0
+texture = ExtResource("1_dtwsp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(2018, 533)
+texture = ExtResource("2_xqvf2")
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(100, 540)
+spread = 39.43
+gravity = Vector2(-380, 0)
+initial_velocity_max = 105.81
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_navmr")
+
+[node name="Menu" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_xqvf2")
+
+[node name="Selector" type="TextureRect" parent="Menu"]
+layout_mode = 0
+offset_left = 801.0
+offset_top = 533.0
+offset_right = 842.0
+offset_bottom = 580.0
+texture = ExtResource("6_cmc67")
+
+[node name="ButtonList" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 869.0
+offset_top = 527.0
+offset_right = 1242.0
+offset_bottom = 777.0
+alignment = 1
+
+[node name="Masuk" type="Button" parent="Menu/ButtonList"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+focus_neighbor_bottom = NodePath("../Daftar")
+theme_override_colors/font_color = Color(1, 1, 1, 0.49803922)
+theme_override_colors/font_focus_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_5m8ma")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xqvf2")
+text = "MASUK"
+flat = true
+
+[node name="Daftar" type="Button" parent="Menu/ButtonList"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Masuk")
+focus_neighbor_bottom = NodePath("../Pengaturan")
+theme_override_colors/font_color = Color(1, 1, 1, 0.49803922)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("3_5m8ma")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5m8ma")
+text = "DAFTAR"
+flat = true
+
+[node name="Pengaturan" type="Button" parent="Menu/ButtonList"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Daftar")
+focus_neighbor_bottom = NodePath("../Petunjuk")
+theme_override_colors/font_color = Color(1, 1, 1, 0.49803922)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("3_5m8ma")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l756y")
+text = "PENGATURAN"
+flat = true
+
+[node name="Petunjuk" type="Button" parent="Menu/ButtonList"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 3
+focus_neighbor_top = NodePath("../Pengaturan")
+theme_override_colors/font_color = Color(1, 1, 1, 0.49803922)
+theme_override_colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_fonts/font = ExtResource("3_5m8ma")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qeenl")
+text = "PETUNJUK
+"
+flat = true
+
+[node name="Karakter" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 429.0
+offset_right = 522.0
+offset_bottom = 1078.0
+texture = ExtResource("4_l756y")
+
+[node name="Judul" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.27109376
+anchor_top = 0.12777779
+anchor_right = 0.7289063
+anchor_bottom = 0.44537038
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_qeenl")
+metadata/_edit_use_anchors_ = true
+
+[node name="XButton" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 1584.0
+offset_top = 936.0
+offset_right = 1624.0
+offset_bottom = 976.0
+texture = ExtResource("8_l756y")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1640.0
+offset_top = 936.0
+offset_right = 1699.0
+offset_bottom = 975.0
+theme_override_fonts/font = ExtResource("9_qeenl")
+theme_override_font_sizes/font_size = 32
+text = "Pilih"
+
+[connection signal="focus_entered" from="Menu/ButtonList/Masuk" to="Menu" method="_on_masuk_button_focus_entered"]
+[connection signal="focus_entered" from="Menu/ButtonList/Daftar" to="Menu" method="_on_daftar_button_focus_entered"]
+[connection signal="focus_entered" from="Menu/ButtonList/Pengaturan" to="Menu" method="_on_pengaturan_button_focus_entered"]
+[connection signal="focus_entered" from="Menu/ButtonList/Petunjuk" to="Menu" method="_on_petunjuk_button_focus_entered"]
